@@ -1,6 +1,6 @@
 package exam.springbootprog2api.service;
 
-import exam.springbootprog2api.entity.Booking;
+import exam.springbootprog2api.entity.BookingEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -9,28 +9,28 @@ import java.util.List;
 @Service
 public class BookingService {
 
-    private final List<Booking> bookings = new ArrayList<>();
+    private final List<BookingEntity> bookingEntities = new ArrayList<>();
 
-    public List<Booking> getBookings() {
-        return bookings;
+    public List<BookingEntity> getBookings() {
+        return bookingEntities;
     }
 
-    public List<Booking> addBooking(Booking booking) {
+    public List<BookingEntity> addBooking(BookingEntity bookingEntity) {
 
-        if (booking.getRoomNumber() < 1 || booking.getRoomNumber() > 9) {
+        if (bookingEntity.getRoomNumber() < 1 || bookingEntity.getRoomNumber() > 9) {
             throw new IllegalArgumentException("Room number must be between 1 and 9");
         }
 
-        for (Booking b : bookings) {
-            if (b.getRoomNumber() == booking.getRoomNumber()
-                    && b.getBookingDate().equals(booking.getBookingDate())) {
+        for (BookingEntity b : bookingEntities) {
+            if (b.getRoomNumber() == bookingEntity.getRoomNumber()
+                    && b.getBookingDate().equals(bookingEntity.getBookingDate())) {
 
                 throw new IllegalStateException("Room already booked for this date");
             }
         }
 
-        bookings.add(booking);
+        bookingEntities.add(bookingEntity);
 
-        return bookings;
+        return bookingEntities;
     }
 }

@@ -1,6 +1,6 @@
 package exam.springbootprog2api.controller;
 
-import exam.springbootprog2api.entity.Booking;
+import exam.springbootprog2api.entity.BookingEntity;
 import exam.springbootprog2api.service.BookingService;
 
 import org.springframework.http.ResponseEntity;
@@ -19,15 +19,15 @@ public class BookingController {
     }
 
     @GetMapping
-    public List<Booking> getBookings() {
+    public List<BookingEntity> getBookings() {
         return bookingService.getBookings();
     }
 
     @PostMapping
-    public ResponseEntity<?> createBooking(@RequestBody Booking booking) {
+    public ResponseEntity<?> createBooking(@RequestBody BookingEntity bookingEntity) {
 
         try {
-            List<Booking> result = bookingService.addBooking(booking);
+            List<BookingEntity> result = bookingService.addBooking(bookingEntity);
             return ResponseEntity.ok(result);
         } catch (IllegalArgumentException e) {
             return ResponseEntity.badRequest().body(e.getMessage());

@@ -2,7 +2,7 @@ package exam.springbootprog2api.entity;
 
 import java.time.LocalDate;
 
-public class Booking {
+public class BookingEntity {
 
     private String customerName;
     private String phone;
@@ -11,7 +11,7 @@ public class Booking {
     private String roomDescription;
     private LocalDate bookingDate;
 
-    public Booking() {}
+    public BookingEntity() {}
 
     public String getCustomerName() {
         return customerName;
